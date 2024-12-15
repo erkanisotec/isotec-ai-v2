@@ -59,6 +59,11 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
 
       <div className="mt-auto px-4">
         <button
+          onClick={() => {
+            fetch('/api/auth/logout', { method: 'POST' })
+              .then(() => window.location.href = '/login')
+              .catch(err => console.error('Logout failed:', err));
+          }}
           className={`flex items-center text-gray-600 hover:text-red-600 text-sm ${
             isCollapsed ? 'justify-center' : 'space-x-3'
           }`}
